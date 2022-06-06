@@ -84,6 +84,7 @@ app.post("/db", (req, res) => {
                 if (err) {
                     console.error(err);
                 }
+                res.sendStatus(200);
             }
         );
     });
