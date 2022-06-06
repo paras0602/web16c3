@@ -72,3 +72,19 @@ app.get("/db", (req, res) => {
         res.send(parsed);
     });
 });
+app.post("/db", (req, res) => {
+    fs.readFile("./db.json", { encoding: "utf-8" }, (err, data) => {
+        const parsed = JSON.parse(data);
+        parsed.users = [req.body];
+        fs.writeFile(
+            "./db.json",
+            JSON.stringify(parsed),
+            { encoding: "utf-8" },
+            (err) => {
+                if (err) {
+                    console.error(err);
+                }
+            }
+        );
+    });
+});
