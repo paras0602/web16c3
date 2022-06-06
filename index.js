@@ -65,3 +65,10 @@ app.get("/votes/count/:user", (req, res) => {
         res.send(parsed);
     });
 });
+
+app.get("/db", (req, res) => {
+    fs.readFile("./db.json", "utf-8", (err, data) => {
+        const parsed = JSON.parse(data);
+        res.send(parsed);
+    });
+});
